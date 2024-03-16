@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<html>
+    <head>
+        <!-- Add your head content here -->
+    </head>
+    <body>
+        {% block register %}
+        <div class="container mt-4">
+            <h2>Không có quyền truy cập</h2>
+            <p>Xin lỗi bạn không thể truy cập vào trang này!</p>
+        </div>
+        {% endblock register %}
+    </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<html>
+    <head>
+        <!-- Add your head content here -->
+    </head>
+    <body>
+        {% block register %}
+        <h2>Welcome to the Admin Home Page, {{ user.username }}!</h2>
+
+        {% if user.profile.role == 'student' %}
+          <h3>Add Student Form:</h3>
+          <form method="post" enctype="multipart/form-data" action="{% url 'add_student' %}">
+            {% csrf_token %}
+            {{ student_form.as_p }}
+            <button type="submit">Submit</button>
+          </form>
+        {% elif user.profile.role == 'teacher' %}
+          <h3>Add Teacher Form:</h3>
+          <form method="post" enctype="multipart/form-data" action="{% url 'add_teacher' %}">
+            {% csrf_token %}
+            {{ teacher_form.as_p }}
+            <button type="submit">Submit</button>
+          </form>
+        {% endif %}
+        {% endblock register %}
+    </body>
+</html>

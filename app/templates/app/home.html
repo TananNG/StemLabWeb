@@ -1,0 +1,69 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+{% block banner_slider %}
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="{% static 'app/images/logo.jpg' %}" class="d-block w-100" alt="Lập trình Scratch" height='600'>
+        <div class="carousel-caption d-none d-md-block bg-sucess text-white">
+          <h5>Lập trình Scratch</h5>
+          <p>Lập trình game căn bản dành cho bé từ lớp 3 đến lớp 5</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{% static 'app/images/logo.jpg' %}" class="d-block w-100" alt="Lập trình Robotic" height='600'>
+        <div class="carousel-caption d-none d-md-block bg-sucess text-white">
+          <h5>Lập trình Robotic</h5>
+          <p>Lập trình robot dành cho bé</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'app/images/logo.jpg' %}" class="d-block w-100" alt="Lập trình Python" height='600'>
+        <div class="carousel-caption d-none d-md-block bg-sucess text-white">
+          <h5>Lập trình Python</h5>
+          <p>Lập trình với ngôn ngữ python</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'app/images/logo.jpg' %}" class="d-block w-100" alt="Lập trình Web" height='600'>
+        <div class="carousel-caption d-none d-md-block bg-sucess text-white">
+          <h5>Lập trình Web</h5>
+          <p>Thiết kế web</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock banner_slider %}
+{% block main-content %}
+<div class="row" style="width=100%">
+  {% for subject in subjects %}
+ <div class="col-lg-4">
+    <img class="thumbnail" src="{{subject.ImageURL}}" width='400'>
+    <div class="box-element subject">
+        <h6><strong>{{subject.name}}</strong></h6>
+        <hr>
+        <a class="btn btn-outline-secondary add-btn" href="{% url 'learn_subject' subject_id=subject.id %}">Học</a>
+        <a class="btn btn-outline-success" href="{% url 'subject_detail' subject_id=subject.id %}">Giới thiệu</a>
+        <h4 style="display: inline-block; float: right"><strong>{{subject.price | floatformat:0}}vnđ</strong></h4>
+    </div>
+ </div>
+ {% endfor %}
+
+
+</div>
+<br/><br/>
+{% endblock main-content %}

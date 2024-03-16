@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block register %}
+        <h5>Result Search for {{searched}}</h5>
+        <div class="row" style="width=100%">
+          {% for subject in keys %}
+         <div class="col-lg-4">
+            <img class="thumbnail" src="{{subject.ImageURL}}" width='400'>
+            <div class="box-element subject">
+                <h6><strong>{{subject.name}}</strong></h6>
+                <hr>
+        
+                <button class="btn btn-outline-secondary add-btn">Đăng kí</button>
+                <a class="btn btn-outline-success" href="#">Xem</a>
+                <h4 style="display: inline-block; float: right"><strong>{{subject.price | floatformat:0}}vnđ</strong></h4>
+            </div>
+         </div>
+         {% endfor %}
+        
+        
+        </div>
+        {% endblock register %}
+    </body>
+    
+  
+</html>

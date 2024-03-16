@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="{% static 'path/to/main.css' %}">
+    </head>
+    <body>
+        {% block register %}
+        <h2>{{ subject.name }}</h2>
+    <img src="{{ subject.ImageURL }}" alt="{{ subject.name }}">
+    <p>{{ subject.description }}</p>
+    <p>Price: {{ subject.price | floatformat:0 }}vnđ</p>
+    <!-- Thêm các thông tin khác về môn học nếu cần -->
+        {% endblock register %}
+    </body>
+    
+  
+</html>

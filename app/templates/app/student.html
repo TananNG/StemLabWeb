@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content_class %}
+    <div class="row">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form">
+					<div id="user-info">
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Học và tên..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Địa chỉ..">
+						</div>
+					</div>
+					
+					<div id="shipping-info">
+						<hr>
+						<p>Thông Tin Đăng Kí:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Địa chỉ..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="Thành phố..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="Quận/huyện..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Số điện thoại..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="country" placeholder="Địa chỉ nhà..">
+						</div>
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Cập nhật">
+				</form>
+			</div>
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small>Paypal Options</small>
+			</div>
+			
+		</div>
+		
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a  class="btn btn-outline-dark" href="{% url 'class' %}">&#x2190; Trở về lớp học</a>
+				<hr>
+				
+				<h3>Đánh giá buổi học gần nhất</h3>
+				<hr>
+
+				<h5>{% for student in students%}<strong> {{student.rate}}</strong>{% endfor %}</h5>
+			
+		</div>
+		
+		</div>
+		
+	</div>
+{% endblock content_class %}

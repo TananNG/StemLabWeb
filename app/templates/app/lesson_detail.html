@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ subject.name }} - Lesson {{ lesson_number }}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'path/to/main.css' %}">
+</head>
+<body>
+    {% block register %}
+    <h1 style="text-align: center;">{{ subject.name }} - Bài {{ lesson_number }}</h1>
+
+        {% if lesson %}
+            <h2>{{ lesson.title }}</h2>
+            <p>{{ lesson.content_text }}</p>
+
+            {% if lesson.content_image %}
+                <img src="{{ lesson.content_image.url }}" alt="Lesson Image" >
+            {% endif %}
+        {% else %}
+            <p>No lesson found for the specified index.</p>
+        {% endif %}
+        <br>
+        
+        <form action="{% url 'learn_subject' subject_id=subject.id %}" method="get">
+            <button type="submit">Trở về</button>
+        </form>
+    {% endblock register %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<html>
+    <head>
+        <!-- Add your head content here -->
+    </head>
+    <body>
+        {% block register %}
+        <h2>Add User</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add User</button>
+            </form>
+        {% endblock register %}
+    </body>
+</html>

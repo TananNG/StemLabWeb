@@ -1,0 +1,74 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block class_content %}
+<div class="row">
+	<div class="col-lg-12">
+		<div class="box-element">
+
+			<a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Return Home</a>
+
+			<br>
+			<br>
+			<table class="table">
+				<tr>
+					<th><h5>Môn học hiện tại: {% for data in subject_data %}
+							{%if forloop.last %}
+								<strong>{{data.subject_name}}</strong>
+							{%endif%}
+						{% endfor %}</h5></th>
+					<th><h5>Số buổi học:{% for student in students%}<strong> {{student.slot}}</strong>{% endfor %}</h5></th>
+					<th><h5>Nhận xét:{% for student in students%}<strong> {{student.rate}}</strong>{% endfor %}</h5></th>
+					<th><h5>{% for student in students%}{% if student.danh_hieu %}
+						<img src="{{ student.danh_hieu.url }}" alt="{{ student.name }} Danh Hieu Image" style="max-width: 100px; max-height: 100px;">
+					{% else %}
+						<!-- Display a default image or some placeholder -->
+						<strong>Không có danh hiệu<strong>
+						{% comment %} <img src="{% static 'path/to/default_image.jpg' %}" alt="Default Image" style="max-width: 100px; max-height: 100px;"> {% endcomment %}
+					{% endif %}{% endfor %}</h5></th>
+					<th>
+						{% comment %} <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'student' %}">Detail</a> {% endcomment %}
+					</th>
+				</tr>
+			</table>
+
+		</div>
+
+		<br>
+		<div class="box-element">
+			<div class="cart-row">
+				<div style="flex:2"></div>
+				<div style="flex:2"><strong>Tên</strong></div>
+				<div style="flex:1"><strong>Lớp</strong></div>
+				<div style="flex:1"><strong>Môn học</strong></div>
+				
+			</div>
+			{% for student in students%}
+			<div class="cart-row">
+				
+				<div style="flex:2"><img class="row-image" src="{{student.ImageURL}}"></div>
+				
+				<div style="flex:2"><p>{{student.name}}</p></div>
+			
+				<div style="flex:1"><p>
+					{% for class_room in student.classRoom.all %}
+					{{ class_room.name }}
+					{% endfor %}
+					</p></div>
+				<div style="flex:1">
+					{% for data in subject_data %}
+        				<p>{{data.subject_name}}
+							{{data.quantity}}
+						</p>
+    				{% endfor %}
+					
+				</div>
+
+			</div>
+			{% endfor %}
+			        <div style="flex:1">
+            <!-- Other content -->
+        </div>
+		</div>
+	</div>
+</div>
+{% endblock class_content %}

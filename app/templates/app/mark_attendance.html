@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<html>
+    <head>
+        <!-- Add your head content here -->
+    </head>
+    <body>
+        {% block register %}
+        <div class="container mt-4">
+            <h2>Mark Attendance</h2>
+            <!-- Your content for the mark_attendance page goes here -->
+            <p>Attendance marked successfully!</p>
+            <a href="{% url 'classname' %}" class="btn btn-secondary">Trở về lớp</a>
+        </div>
+        {% endblock register %}
+    </body>
+</html>

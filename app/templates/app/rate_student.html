@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+{% load static  %}
+
+<html>
+    <head>
+        <!-- Add your head content here -->
+    </head>
+    <body>
+        {% block register %}
+        <div class="container mt-4">
+            <h2>Nhận xét học viên: {{ student.name }}</h2>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="rating">Nhận xét:</label>
+                    <input type="text" class="form-control" name="rating" value="{{ student.rate }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Lưu</button>
+            </form>
+            <a href="{% url 'classname' %}" class="btn btn-secondary mt-2">Trở về lớp</a>
+        </div>
+        {% endblock register %}
+    </body>
+</html>
